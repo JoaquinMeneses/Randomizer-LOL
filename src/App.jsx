@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import CardPlayer from "./assets/components/CardPlayer";
 
 const App = () => {
@@ -13,6 +14,23 @@ const App = () => {
     setPlayers(limitedPlayers);
   };
 
+  // Get data champs
+  const [champs, setChamps] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(
+        "https://ddragon.leagueoflegends.com/cdn/13.24.1/data/es_AR/champion.json"
+      )
+      .then((res) => {
+        console.log(res.data);
+        setChamps(res.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching champions:", err);
+      });
+  }, []);
+
   return (
     <div className="bg-black_hextech min-h-screen text-text font-spiegel">
       <header>
@@ -20,10 +38,10 @@ const App = () => {
           RANDOMIZER
         </h1>
       </header>
-      <main className="flex w-screen">
-        <div className="w-1/2 h-full flex flex-col items-center gap-2">
+      <main className="flex flex-col w-screen">
+        <div className="w-full h-full flex flex-col items-center gap-2">
           <p>Ingrese los jugadores:</p>
-          <div className="w-1/2 bg-border p-0.5">
+          <div className="w-1/4 bg-border p-0.5">
             <textarea
               className="p-2 text-subtext flex h-full w-full items-center justify-center bg-secondary resize-none outline-none focus:outline-title"
               value={players.join("\n")}
