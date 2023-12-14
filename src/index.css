@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Spiegel";
+  src: url("./assets//fonts/Spiegel-Regular.otf") format("truetype");
+}
+
+@font-face {
+  font-family: "BeaufortforLOL";
+  src: url("./assets//fonts/BeaufortforLOL-Regular.ttf") format("truetype");
+}
+
+* {
+  cursor: url("./assets//images/cursor.png"), auto;
+}
+
+.cursor-pointer {
+  cursor: url("./assets/images/cursor-pointer.png"), pointer;
+}
+
+::selection {
+  background-color: #c89b3c;
+  color: black;
+}
