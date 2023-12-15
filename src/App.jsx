@@ -23,13 +23,34 @@ const App = () => {
         "https://ddragon.leagueoflegends.com/cdn/13.24.1/data/es_AR/champion.json"
       )
       .then((res) => {
-        console.log(res.data);
-        setChamps(res.data);
+        const champsArray = Object.keys(res.data.data).map((key) => {
+          const champion = res?.data?.data[key];
+          return {
+            name: champion?.name,
+            id: champion?.id,
+            key: champion?.key,
+            image: `https://ddragon.leagueoflegends.com/cdn/13.24.1/img/champion/${champion?.id}.png`,
+          };
+        });
+        setChamps(champsArray);
       })
       .catch((err) => {
         console.error("Error fetching champions:", err);
       });
   }, []);
+
+  // Create random selection champs
+
+  const [verifyChampionAsset, setVerifyChampionAsset] = useState(false);
+  const [randomChamps, setRandomChamps] = useState();
+
+  const createRandomChamps = () => {
+    const shuffledChamps = champs.sort(() => Math.random() - 0.5);
+    const selectedChamps = shuffledChamps.slice(0, 8);
+
+    setRandomChamps(selectedChamps);
+    setVerifyChampionAsset(true);
+  };
 
   return (
     <div className="bg-black_hextech min-h-screen text-text font-spiegel">
@@ -52,14 +73,19 @@ const App = () => {
           </div>
           <button
             className="bg-[#1E2328] m-2 px-4 py-2 cursor-pointer border-border border-2"
-            onClick={() => console.log("clicked")}
+            onClick={createRandomChamps}
           >
             <p className="text-subtext font-spiegel font-bold cursor-pointer">
               RANDOM
             </p>
           </button>
         </div>
-        <CardPlayer players={players} />
+        <CardPlayer
+          players={players}
+          champs={champs}
+          verifyChampAsset={verifyChampionAsset}
+          randomChamps={randomChamps}
+        />
       </main>
     </div>
   );
