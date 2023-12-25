@@ -13,14 +13,14 @@
 }
 
 * {
-  cursor: url("./assets//images/cursor.png"), auto;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-.cursor-pointer {
-  cursor: url("./assets/images/cursor-pointer.png"), pointer;
-}
-
-::selection {
-  background-color: #c89b3c;
-  color: black;
+.trapezoid {
+	border-bottom: 32px solid #0397AB;
+	border-left: 36px solid transparent;
+	border-right: 36px solid transparent;
+	width: 190px;
 }
