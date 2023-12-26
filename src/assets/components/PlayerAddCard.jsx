@@ -1,24 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "./Button";
-import icon_add from "../images/icon_add.webp";
+import InvitePlayerModal from "./InvitePlayerModal";
 
-const PlayerAddCard = ({ id, setPlayers }) => {
-  const addPlayer = () => {
-    setPlayers((prevPlayers) =>
-      prevPlayers.map((player) =>
-        player.id === id ? { ...player, name: "Pedro" } : player
-      )
-    );
+import button_invite_default from "../images/button_invite_default.png";
+import button_invite_hover from "../images/button_invite_hover.png";
+
+const PlayerAddCard = () => {
+  const icons = { default: button_invite_default, hover: button_invite_hover };
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
   };
 
   return (
-    <section className="bg-blue-7/50 w-[20rem] h-[5.938rem] grid place-content-center px-4 hover:bg-gradient-to-t hover:from-gold-5/50 border border-gold-4 hover:border-gold-1">
+    <section className="bg-grey-hextech-black/60 w-full h-[5.938rem] grid place-content-center px-4 hover:bg-gradient-to-t hover:from-gold-5/50 border border-gold-4 hover:border-gold-1">
       <Button
-        desc="Add a player"
-        size={14}
-        icon={icon_add}
-        action={addPlayer}
+        desc="Open modal for invite players"
+        size={20}
+        icons={icons}
+        action={openModal}
       />
+      {isModalOpen && <InvitePlayerModal closeModal={closeModal} />}
     </section>
   );
 };

@@ -11,6 +11,9 @@ export default {
         default: "url(./assets//images/cursor.webp), auto",
         pointer: "url(./assets/images/cursor_pointer.webp), pointer",
       },
+      boxShadow: {
+        "btn": "0 0px 10px 1px #F0E6D2",
+      },
       colors: {
         blue: {
           1: "#CDFAFA",

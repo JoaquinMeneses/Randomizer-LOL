@@ -1,12 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 
-const Button = ({ desc, size, icon, action }) => {
+const Button = ({ desc, size, icons, action }) => {
+  const [hovered, setHovered] = useState(false);
+
+  const handleMouseEnter = () => {
+    setHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setHovered(false);
+  };
+
+  const buttonImage = hovered ? icons?.hover : icons?.default;
+
   return (
     <button
-      className={`bg-grey-3 w-${size} h-${size} grid place-content-center rounded-full border-gold-4 border-2 hover:border-gold-1 hover:bg-gradient-to-t hover:from-gold-7 cursor-pointer`}
-      onClick={() => action()}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      onClick={action}
+      className={`h-${size} w-${size}`}
     >
-      <img src={icon} alt={`Icon of button ${desc}`} className="w-8 h-8" />
+      <img
+        src={buttonImage}
+        alt={`Button: ${desc}`}
+        className="h-full w-full cursor-pointer"
+      />
     </button>
   );
 };

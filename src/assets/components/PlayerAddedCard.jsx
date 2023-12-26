@@ -1,9 +1,13 @@
 import React from "react";
 import Button from "./Button";
+
+import button_kick_default from "../images/button_kick_default.png";
+import button_kick_hover from "../images/button_kick_hover.png";
 import icon_question_mark from "../images/icon_question_mark.webp";
-import icon_kick from "../images/icon_kick.webp";
 
 const PlayerAddedCard = ({ id, name, setPlayers }) => {
+  const icons = { default: button_kick_default, hover: button_kick_hover };
+
   const deletePlayer = () => {
     setPlayers((prevPlayers) =>
       prevPlayers.map((player) =>
@@ -13,7 +17,7 @@ const PlayerAddedCard = ({ id, name, setPlayers }) => {
   };
 
   return (
-    <section className="bg-blue-7/50 w-[20rem] h-[5.938rem] flex items-center justify-between px-4 hover:bg-gradient-to-t hover:from-gold-5/50 border border-gold-4 hover:border-gold-1">
+    <section className="bg-grey-hextech-black/60 w-full h-[5.938rem] flex items-center justify-between px-4 hover:bg-gradient-to-t hover:from-gold-5/50 border border-gold-4 hover:border-gold-1">
       <div className="flex items-center">
         <img
           src={icon_question_mark}
@@ -24,8 +28,8 @@ const PlayerAddedCard = ({ id, name, setPlayers }) => {
       </div>
       <Button
         desc="Delete a player"
-        size={8}
-        icon={icon_kick}
+        size={10}
+        icons={icons}
         action={deletePlayer}
       />
     </section>

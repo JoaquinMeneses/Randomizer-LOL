@@ -18,7 +18,7 @@ const ContainerPlayersCards = () => {
   );
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 w-1/2">
       {players.map((player) =>
         player.name === null ? (
           <PlayerAddCard
