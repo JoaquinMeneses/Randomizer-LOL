@@ -11,6 +11,22 @@ const Button = ({ desc, size, icons, action }) => {
     setHovered(false);
   };
 
+  const getSizeClass = (size) => {
+    switch (size) {
+      case 8:
+        return "h-8 w-8";
+      case 10:
+        return "h-10 w-10";
+      case 16:
+        return "h-16 w-16";
+      case 20:
+        return "h-20 w-20";
+      default:
+        return "h-4 w-4";
+    }
+  };
+
+  const buttonSize = getSizeClass(size);
   const buttonImage = hovered ? icons?.hover : icons?.default;
 
   return (
@@ -18,7 +34,7 @@ const Button = ({ desc, size, icons, action }) => {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onClick={action}
-      className={`h-${size} w-${size}`}
+      className={buttonSize}
     >
       <img
         src={buttonImage}
