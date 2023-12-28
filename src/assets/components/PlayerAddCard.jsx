@@ -5,7 +5,7 @@ import InvitePlayerModal from "./InvitePlayerModal";
 import button_invite_default from "../images/button_invite_default.png";
 import button_invite_hover from "../images/button_invite_hover.png";
 
-const PlayerAddCard = () => {
+const PlayerAddCard = ({ id }) => {
   const icons = { default: button_invite_default, hover: button_invite_hover };
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -25,7 +25,7 @@ const PlayerAddCard = () => {
         icons={icons}
         action={openModal}
       />
-      {isModalOpen && <InvitePlayerModal closeModal={closeModal} />}
+      {isModalOpen && <InvitePlayerModal closeModal={closeModal} id={id} />}
     </section>
   );
 };
