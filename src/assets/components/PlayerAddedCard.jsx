@@ -5,15 +5,18 @@ import button_kick_default from "../images/button_kick_default.png";
 import button_kick_hover from "../images/button_kick_hover.png";
 import icon_question_mark from "../images/icon_question_mark.webp";
 
-const PlayerAddedCard = ({ id, name, setPlayers }) => {
+import useStore from "../store/store";
+
+const PlayerAddedCard = ({ id, name }) => {
   const icons = { default: button_kick_default, hover: button_kick_hover };
 
-  const deletePlayer = () => {
-    setPlayers((prevPlayers) =>
-      prevPlayers.map((player) =>
-        player.id === id ? { ...player, name: null } : player
-      )
+  const { players, setPlayers } = useStore();
+
+  const kickPlayer = () => {
+    const updatedPlayers = players.map((player) =>
+      player.id === id ? { ...player, name: null } : player
     );
+    setPlayers(updatedPlayers);
   };
 
   return (
@@ -27,10 +30,10 @@ const PlayerAddedCard = ({ id, name, setPlayers }) => {
         <p className="font-spiegel text-gold-4 font-bold px-4">{name}</p>
       </div>
       <Button
-        desc="Delete a player"
+        desc="Kick a player"
         size={10}
         icons={icons}
-        action={deletePlayer}
+        action={kickPlayer}
       />
     </section>
   );
