@@ -13,10 +13,6 @@ const PlayerAddCard = ({ id }) => {
     setIsModalOpen(true);
   };
 
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-
   return (
     <section className="bg-grey-hextech-black/60 w-full h-[5.938rem] grid place-content-center px-4 hover:bg-gradient-to-t hover:from-gold-5/50 border border-gold-4 hover:border-gold-1">
       <Button
@@ -25,7 +21,7 @@ const PlayerAddCard = ({ id }) => {
         icons={icons}
         action={openModal}
       />
-      {isModalOpen && <InvitePlayerModal closeModal={closeModal} id={id} />}
+      {isModalOpen && <InvitePlayerModal id={id} />}
     </section>
   );
 };

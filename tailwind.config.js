@@ -12,7 +12,7 @@ export default {
         pointer: "url(./assets/images/cursor_pointer.webp), pointer",
       },
       boxShadow: {
-        "btn": "0 0px 10px 1px #F0E6D2",
+        btn: "0 0px 10px 1px #F0E6D2",
       },
       colors: {
         blue: {
@@ -41,6 +41,7 @@ export default {
           cool: "#1E282D",
           "hextech-black": "#010A13",
         },
+        error: "#92192e",
       },
     },
   },
